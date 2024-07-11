@@ -220,7 +220,12 @@ fn load_pem_certs_from_dir(dir: &Path) -> Result<Vec<CertificateDer<'static>>, E
             Err(e) => return Err(e),
         };
         if metadata.is_file() && is_hash_file_name(file_name) {
-            certs.append(&mut load_pem_certs(&path)?);
+            match load_pem_certs(&path) {
+                Ok(mut file_certs) => certs.append(&mut file_certs),
+                Err(err) => {
+                    log::warn!("could not load certs from {}: {}", path.display(), err);
+                }
+            }
         }
     }
     Ok(certs)

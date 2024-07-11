@@ -13,6 +13,7 @@ categories = ["network-programming", "cryptography"]
 [dependencies]
 rustls-pemfile = "2"
 pki-types = { package = "rustls-pki-types", version = "1" }
+log = "0.4"
 
 [dev-dependencies]
 ring = "0.17"

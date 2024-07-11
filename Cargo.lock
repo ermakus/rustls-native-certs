@@ -689,6 +689,7 @@ dependencies = [
 name = "rustls-native-certs"
 version = "0.7.1"
 dependencies = [
+ "log",
  "openssl-probe",
  "ring",
  "rustls",
